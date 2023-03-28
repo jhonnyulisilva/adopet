@@ -29,6 +29,7 @@ public class TutorUseCase {
         try {
             validaDados.validaEmail(tutor.getEmail());
             validaDados.validaSenha(tutor.getSenha());
+            validaDados.validaNome(tutor.getNome());
         } catch (DadosInvalidoException e) {
             throw new DadosInvalidoException(e.getMessage());
         }
@@ -61,6 +62,7 @@ public class TutorUseCase {
         try {
             validaDados.validaEmail(tutor.getEmail());
             validaDados.validaSenha(tutor.getSenha());
+            validaDados.validaNome(tutor.getNome());
         } catch (DadosInvalidoException e) {
             throw new DadosInvalidoException(e.getMessage());
         }

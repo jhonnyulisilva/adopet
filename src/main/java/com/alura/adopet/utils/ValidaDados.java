@@ -23,4 +23,10 @@ public class ValidaDados {
             throw new DadosInvalidoException("Senha invalida!");
         }
     }
+
+    public void validaNome(String nome) throws DadosInvalidoException {
+        if(nome.isBlank() || nome.isEmpty()) {
+            throw new DadosInvalidoException("Nome invalido!");
+        }
+    }
 }
