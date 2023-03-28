@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: adopet
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/adopet
+    username: adopet
+    password: adopet
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+    flyway:
+      url: jdbc:mysql://localhost:3306/adopet
+      user: adopet
+      password: adopet
+      driver: com.mysql.cj.jdbc.Driver
+      table: flyway_schema_history
+      createSchemas: true
