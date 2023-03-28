@@ -45,4 +45,12 @@ public class TutorUseCase {
         Optional<TutorEntity> tutor = tutorRepository.findById(id);
         return mapper.toDomain(tutor.orElse(null));
     }
+
+    public void deletarTutor(long id) throws DadosInvalidoException {
+        Tutor tutor = buscarTutor(id);
+        if (tutor == null) {
+            throw new DadosInvalidoException("Esse tutor não existe");
+        }
+        tutorRepository.deleteById(id);
+    }
 }
