@@ -40,8 +40,18 @@ public class TutorController {
         }
     }
 
+    @PutMapping()
+    public ResponseEntity<?> atualizarDados(@RequestBody Tutor tutor) throws DadosInvalidoException {
+        try {
+            tutorUseCase.atualizarDados(tutor);
+            return ResponseEntity.ok().build();
+        } catch (DadosInvalidoException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<?> delete(@PathVariable long id) throws DadosInvalidoException {
+    public ResponseEntity<?> delete(@PathVariable long id) {
         try {
             tutorUseCase.deletarTutor(id);
             return ResponseEntity.ok().build();

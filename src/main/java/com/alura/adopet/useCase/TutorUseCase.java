@@ -28,6 +28,7 @@ public class TutorUseCase {
 
         try {
             validaDados.validaEmail(tutor.getEmail());
+            validaDados.validaSenha(tutor.getSenha());
         } catch (DadosInvalidoException e) {
             throw new DadosInvalidoException(e.getMessage());
         }
@@ -52,5 +53,22 @@ public class TutorUseCase {
             throw new DadosInvalidoException("Esse tutor não existe");
         }
         tutorRepository.deleteById(id);
+    }
+
+    public void atualizarDados(Tutor tutor) throws DadosInvalidoException {
+        Tutor tutorEncontrado = buscarTutor(tutor.getId());
+
+        try {
+            validaDados.validaEmail(tutor.getEmail());
+            validaDados.validaSenha(tutor.getSenha());
+        } catch (DadosInvalidoException e) {
+            throw new DadosInvalidoException(e.getMessage());
+        }
+
+        if(tutorEncontrado.getId().equals(tutor.getId())) {
+            tutorRepository.save(mapper.toEntity(tutor));
+        } else {
+            throw new DadosInvalidoException("Esse tutor não existe");
+        }
     }
 }

@@ -17,4 +17,10 @@ public class ValidaDados {
             throw new DadosInvalidoException("Email invalido");
         }
     }
+
+    public void validaSenha(String senha) throws DadosInvalidoException {
+        if(senha.isEmpty() || senha.isBlank()) {
+            throw new DadosInvalidoException("Senha invalida!");
+        }
+    }
 }
