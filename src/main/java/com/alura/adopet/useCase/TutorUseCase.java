@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TutorUseCase {
@@ -38,5 +39,10 @@ public class TutorUseCase {
     public List<Tutor> buscarTutores() {
         List<TutorEntity> listaTutores = tutorRepository.findAll();
         return mapper.toListDomain(listaTutores);
+    }
+
+    public Tutor buscarTutor(long id) {
+        Optional<TutorEntity> tutor = tutorRepository.findById(id);
+        return mapper.toDomain(tutor.orElse(null));
     }
 }

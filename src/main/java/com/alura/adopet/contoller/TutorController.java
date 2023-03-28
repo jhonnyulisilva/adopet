@@ -18,6 +18,17 @@ public class TutorController {
         return ResponseEntity.ok(tutorUseCase.buscarTutores());
     }
 
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<?> buscarTutor(@PathVariable long id) {
+        Tutor tutor = tutorUseCase.buscarTutor(id);
+
+        if(tutor == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(tutor);
+    }
+
     @PostMapping()
     public ResponseEntity<?> save(@RequestBody Tutor user) {
         try {
